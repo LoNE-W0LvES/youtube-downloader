@@ -1,23 +1,43 @@
-# Byte-compiled / optimized / DLL files
+# Python environments and cache
+.venv/
+venv/
+env/
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Distribution / packaging
+*.so
 build/
 dist/
 *.egg-info/
 
-# Virtual Environments
-.venv/
-venv/
-ENV/
-env/
+# Large binaries (exceeds GitHub 100MB limit)
+ffmpeg/*.exe
+*.exe
 
-# IDE configurations
+# Download outputs and temporary files
+downloads/
+Output/
+*.mp4
+*.mkv
+*.webm
+*.mp3
+*.m4a
+*.aria2
+
+# Sensitive cookies and session state
+cookies.txt
+cookies/
+temp_cookies.txt
+status.json
+
+# Local runtime & tools
+nodejs/
+*.log
+error_log.txt
+
+# IDE & Editor files
 .idea/
 .vscode/
-
-# Local logs and temporary files
-error_log.txt
-*.log
+.claude/
+.DS_Store
+Thumbs.db

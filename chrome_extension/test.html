@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chrome Extension Test</h1>
+
+    <div class="test-section">
+        <h2>Test 1: Check if content script loads</h2>
+        <p>Open the browser console (F12) and look for:</p>
+        <code>[Extension] Content script loaded on: ...</code>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Check Facebook button</h2>
+        <p>Click below to simulate Facebook page:</p>
+        <button onclick="testFacebook()">Simulate Facebook Video Page</button>
+        <div id="result1" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Direct Facebook Links</h2>
+        <p>Try these real Facebook video links:</p>
+        <ul>
+            <li><a href="https://www.facebook.com/watch/?v=123456789" target="_blank">Watch link</a></li>
+            <li><a href="https://www.facebook.com/reel/123456789" target="_blank">Reel link</a></li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Extension Status</h2>
+        <button onclick="checkExtension()">Check Extension</button>
+        <div id="result2" class="result"></div>
+    </div>
+
+    <script>
+        function testFacebook() {
+            const result = document.getElementById('result1');
+            result.innerHTML = 'Check console for [Extension] messages...<br>';
+            result.innerHTML += 'Button ID exists: ' + (document.getElementById('fb-downloader-btn') !== null);
+        }
+
+        function checkExtension() {
+            const result = document.getElementById('result2');
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                result.innerHTML = '✅ Chrome extension API available<br>';
+                result.innerHTML += 'Extension ID: ' + chrome.runtime.id;
+            } else {
+                result.innerHTML = '❌ Chrome extension API not available';
+            }
+        }
+
+        // Log on page load
+        console.log('Test page loaded. Waiting for extension...');
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Video Downloader",
+  "version": "3.0",
+  "description": "Download videos from any supported website directly to your computer.",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "cookies"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.facebook.com/*",
+        "*://fb.watch/*",
+        "<all_urls>"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
